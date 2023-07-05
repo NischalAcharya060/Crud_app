@@ -3,7 +3,7 @@
 @section('content')
     <h1>Edit Student</h1>
 
-    <form action="/students/{{ $student->id }}" method="POST">
+    <form action="/students/{{ $student->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -37,6 +37,14 @@
                 <option value="1" {{ $student->status ? 'selected' : '' }}>Active</option>
                 <option value="0" {{ !$student->status ? 'selected' : '' }}>Inactive</option>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="profile_picture">Profile Picture</label>
+            <input type="file" name="profile_picture" id="profile_picture" class="form-control-file">
+            @error('profile_picture')
+                <div class="error" style="color: red;">{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>

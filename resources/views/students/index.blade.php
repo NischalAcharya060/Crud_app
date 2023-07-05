@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Profile Picture</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
@@ -25,6 +26,17 @@
             @foreach($students as $student)
                 <tr>
                     <td>{{ $student->id }}</td>
+                    <td>
+                        @if($student->profile_picture)
+                        <img src="{{ asset('storage/profile_pictures/' . $student->profile_picture) }}" alt="Profile Picture" style="width: 50px; height: 50px;">
+
+
+
+                        
+                        @else
+                            No Image 
+                        @endif
+                    </td>
                     <td>{{ $student->sname }}</td>
                     <td>{{ $student->semail }}</td>
                     <td>{{ $student->smobile }}</td>
