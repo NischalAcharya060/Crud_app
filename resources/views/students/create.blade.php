@@ -35,11 +35,12 @@
         <div class="form-group">
             <label for="sgender">Gender</label>
             <select name="sgender" id="sgender" class="form-control" required>
-                <option value="f">Female</option>
-                <option value="m">Male</option>
-                <option value="o">Other</option>
+              <option value="m">Male</option>
+              <option value="f">Female</option>
+              <option value="o">Other</option>
             </select>
-        </div>
+          </div>
+          
 
         <div class="form-group">
             <label for="status">Status</label>

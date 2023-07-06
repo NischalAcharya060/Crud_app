@@ -25,8 +25,8 @@
         <div class="form-group">
             <label for="sgender">Gender</label>
             <select name="sgender" id="sgender" class="form-control" required>
-                <option value="f" {{ $student->sgender === 'f' ? 'selected' : '' }}>Female</option>
                 <option value="m" {{ $student->sgender === 'm' ? 'selected' : '' }}>Male</option>
+                <option value="f" {{ $student->sgender === 'f' ? 'selected' : '' }}>Female</option>
                 <option value="o" {{ $student->sgender === 'o' ? 'selected' : '' }}>Other</option>
             </select>
         </div>
@@ -48,5 +48,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/students" class="btn btn-secondary">Cancel</a>
     </form>
 @endsection

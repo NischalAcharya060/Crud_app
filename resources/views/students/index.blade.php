@@ -41,7 +41,15 @@
                     <td>{{ $student->sname }}</td>
                     <td>{{ $student->semail }}</td>
                     <td>{{ $student->smobile }}</td>
-                    <td>{{ $student->sgender }}</td>
+                    <td>
+                        @if ($student->sgender === 'f')
+                            Female
+                        @elseif ($student->sgender === 'm')
+                            Male
+                        @else
+                            Other
+                        @endif
+                    </td>
                     {{-- <td>{{ $student->status ? 'Active' : 'Inactive' }}</td> --}}
                     <td>
                         <select class="status-select" data-student-id="{{ $student->id }}">
