@@ -17,11 +17,19 @@ use Illuminate\Support\Facades\Redirect;
 
 class StudentController extends Controller
 {
-    public function index()
-    {
-        $students = Student::orderBy('id', 'desc')->paginate(5);
-        return view('students.index', compact('students'));
+    public function index(Request $request)
+{
+    $search = $request->input('search');
+    $query = Student::query();
+
+    if (!empty($search)) {
+        $query->where('sname', 'LIKE', '%' . $search . '%')
+            ->orWhere('semail', 'LIKE', '%' . $search . '%');
     }
+
+    $students = $query->orderBy('id', 'desc')->paginate(5);
+    return view('students.index', compact('students', 'search'));
+}
 
     public function create()
     {

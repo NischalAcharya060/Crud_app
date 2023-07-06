@@ -5,6 +5,15 @@
 
     <a href="/students/create" class="btn btn-primary mb-2">Add New Student</a>
 
+    <form action="{{ route('students.index') }}" method="GET" class="search-form">
+        <div class="input-group mb-3">
+            <input type="text" name="search" class="form-control search-input" placeholder="Search by name or email" value="{{ $search }}">
+            <div class="input-group-append">
+            <button class="btn btn-outline-secondary search-button" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
