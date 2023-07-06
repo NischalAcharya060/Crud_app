@@ -107,4 +107,13 @@ class StudentController extends Controller
 
         return redirect('/students')->with('success', 'Student deleted successfully.');
     }
+    public function updateStatus(Request $request, $id)
+{
+    $student = Student::findOrFail($id);
+    $student->status = $request->input('status');
+    $student->save();
+
+    return response()->json(['success' => true]);
+}
+
 }

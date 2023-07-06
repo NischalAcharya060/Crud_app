@@ -65,3 +65,34 @@
     </table>
     {{ $students->links() }}
 @endsection
+{{-- to update status --}}
+@section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Listen for status change
+            $('.status-select').change(function() {
+                var studentId = $(this).data('student-id');
+                var status = $(this).val();
+
+                // Send AJAX request to update the database
+                $.ajax({
+                    url: '/students/' + studentId + '/update-status',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        status: status
+                    },
+                    success: function(response) {
+                        // Handle success response, if needed
+                        console.log(response);
+                    },
+                    error: function(xhr) {
+                        // Handle error response, if needed
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    
