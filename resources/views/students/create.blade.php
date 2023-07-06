@@ -59,5 +59,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
+        <a href="/students" class="btn btn-secondary">Cancel</a>
     </form>
 @endsection
