@@ -32,6 +32,10 @@ class StudentController extends Controller
             'sgender' => 'required|in:f,m,o',
             'status' => 'boolean',
             'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ],[
+            'profile_picture.image' => 'The profile picture must be an image.',
+            'profile_picture.mimes' => 'The profile picture must be a JPEG, PNG, JPG, or GIF file.',
+            'profile_picture.max' => 'The profile picture may not be greater than 2MB.',
         ]);
         // Handle profile picture upload
     if ($request->hasFile('profile_picture')) {
@@ -79,16 +83,23 @@ class StudentController extends Controller
 
         // Handle profile picture update
         if ($request->hasFile('profile_picture')) {
-            $image = $request->file('profile_picture');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('profile_pictures'), $imageName);
-            $request->merge(['profile_picture' => $imageName]);
+            $fileName = time().'.'.$request->profile_picture->extension();
+        
+            Storage::putFileAs('public/profile_pictures', $request->profile_picture, $fileName);
+            $request->merge(['profile_picture' => $fileName]);
+            $data['profile_picture'] = $fileName;
         }
-
-        $student->update($request->all());
-
+        
+        $data['sname'] = $request->sname;
+        $data['semail'] = $request->semail;
+        $data['smobile'] = $request->smobile;
+        $data['sgender'] = $request->sgender;
+        $data['status'] = $request->status;
+        
+        $student->update($data);
+        
         return redirect('/students')->with('success', 'Student updated successfully.');
-    }
+    }        
 
     public function destroy(Student $student)
     {
