@@ -13,7 +13,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::orderBy('id','desc')->paginate(2);
+        $students = Student::orderBy('id','desc')->paginate(10);
         return view('students.index', compact('students'));
         
     }

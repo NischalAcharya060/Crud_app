@@ -42,7 +42,13 @@
                     <td>{{ $student->semail }}</td>
                     <td>{{ $student->smobile }}</td>
                     <td>{{ $student->sgender }}</td>
-                    <td>{{ $student->status ? 'Active' : 'Inactive' }}</td>
+                    {{-- <td>{{ $student->status ? 'Active' : 'Inactive' }}</td> --}}
+                    <td>
+                        <select class="status-select" data-student-id="{{ $student->id }}">
+                            <option value="1" {{ $student->status ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ !$student->status ? 'selected' : '' }}>Inactive</option>
+                        </select>
+                    </td>
                     <td>
 
                         <a href="/students/{{ $student->id }}/edit" class="btn btn-sm btn-success">Edit</a>
