@@ -17,13 +17,36 @@
         border-radius: 4px;
     }
 
+    .search-form {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+    }
+
+    .search-input-group {
+        max-width: 300px;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .search-input {
+        flex: 1;
+        border-radius: 10px 0 0 10px;
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+    }
+
     .search-button {
-        background-color: blue;
+        border-radius: 0 4px 4px 0;
+        border: none;
+        background-color: #0062cc;
         color: white;
+        padding: 8px 12px;
+        cursor: pointer;
     }
 
     .search-button:hover {
-        background-color: rgba(255, 3, 3, 0.644);
+        background-color: #0051a8;
     }
 </style>
 

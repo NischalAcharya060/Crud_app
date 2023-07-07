@@ -5,8 +5,9 @@
 
     <a href="/students/create" class="btn btn-primary mb-2">Add New Student</a>
 
+    @if ($students->count() > 0)
     <form action="{{ route('students.index') }}" method="GET" class="search-form">
-        <div class="input-group mb-3">
+        <div class="input-group input-group-sm search-input-group">
             <input type="text" name="search" class="form-control search-input" placeholder="Search by name or email"
                 value="{{ $search }}">
             <div class="input-group-append">
@@ -14,11 +15,13 @@
             </div>
         </div>
     </form>
+    @endif
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    @if (sizeof($students) > 0)
     <table class="table">
         <thead>
             <tr>
@@ -80,9 +83,16 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table>  
+    @else
+        <div class="alert alert-info">No students found.</div>
+    @endif
+    
+
     {{ $students->links() }}
 @endsection
+
+
 {{-- to update status --}}
 @section('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
