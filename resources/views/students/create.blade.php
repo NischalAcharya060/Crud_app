@@ -5,7 +5,7 @@
 
     <form action="/students" method="POST" enctype="multipart/form-data">
         @csrf
-        
+
         <div class="form-group">
             <label for="sname">Name</label>
             <input type="text" name="sname" id="sname" class="form-control" value="{{ old('sname') }}" required>
@@ -35,12 +35,12 @@
         <div class="form-group">
             <label for="sgender">Gender</label>
             <select name="sgender" id="sgender" class="form-control" required>
-              <option value="m">Male</option>
-              <option value="f">Female</option>
-              <option value="o">Other</option>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+                <option value="o">Other</option>
             </select>
-          </div>
-          
+        </div>
+
 
         <div class="form-group">
             <label for="status">Status</label>

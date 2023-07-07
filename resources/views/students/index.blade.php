@@ -7,9 +7,10 @@
 
     <form action="{{ route('students.index') }}" method="GET" class="search-form">
         <div class="input-group mb-3">
-            <input type="text" name="search" class="form-control search-input" placeholder="Search by name or email" value="{{ $search }}">
+            <input type="text" name="search" class="form-control search-input" placeholder="Search by name or email"
+                value="{{ $search }}">
             <div class="input-group-append">
-            <button class="btn btn-outline-secondary search-button" type="submit">Search</button>
+                <button class="btn btn-outline-secondary search-button" type="submit">Search</button>
             </div>
         </div>
     </form>
@@ -33,7 +34,7 @@
             </tr>
         </thead>
         <tbody>
-            
+
             {{-- @foreach ($students as $student) --}}
             @foreach ($students as $key => $student)
                 <tr>
@@ -112,10 +113,8 @@
             });
         });
     </script>
-    @if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
-
-    
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif

@@ -17,11 +17,12 @@
         border-radius: 4px;
     }
 
-    .search-button{
+    .search-button {
         background-color: blue;
         color: white;
     }
-    .search-button:hover{
+
+    .search-button:hover {
         background-color: rgba(255, 3, 3, 0.644);
     }
 </style>

@@ -14,7 +14,8 @@
 
         <div class="form-group">
             <label for="semail">Email</label>
-            <input type="email" name="semail" id="semail" class="form-control" value="{{ $student->semail }}" required>
+            <input type="email" name="semail" id="semail" class="form-control" value="{{ $student->semail }}"
+                required>
         </div>
 
         <div class="form-group">

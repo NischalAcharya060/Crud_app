@@ -26,5 +26,3 @@ Route::put('/students/{student}', [StudentController::class, 'update']);
 Route::delete('/students/{student}', [StudentController::class, 'destroy']);
 Route::post('/students/{id}/update-status', [StudentController::class, 'updateStatus']);
 Route::get('/students', [StudentController::class, 'index'])->name('students.index');
-
-
