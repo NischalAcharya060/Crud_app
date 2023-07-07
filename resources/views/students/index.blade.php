@@ -11,7 +11,9 @@
             <input type="text" name="search" class="form-control search-input" placeholder="Search by name or email"
                 value="{{ $search }}">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary search-button" type="submit">Search</button>
+                <button class="btn btn-outline-secondary search-button" type="submit"><span class="material-icons">
+                    search
+                    </span></button>
             </div>
         </div>
     </form>
@@ -71,13 +73,19 @@
                         </select>
                     </td>
                     <td>
-                        <a href="/students/{{ $student->id }}" class="btn btn-sm btn-info">View</a>
-                        <a href="/students/{{ $student->id }}/edit" class="btn btn-sm btn-success">Edit</a>
+                        <a href="/students/{{ $student->id }}" class="btn btn-sm btn-info"><span class="material-icons">
+                            search
+                            </span></a>
+                        <a href="/students/{{ $student->id }}/edit" class="btn btn-sm btn-success"><span class="material-icons">
+                            edit
+                            </span></a>
                         <form action="/students/{{ $student->id }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger"
-                                onclick="return confirm('Are you sure you want to delete this student?')">Delete</button>
+                                onclick="return confirm('Are you sure you want to delete this student?')"><span class="material-icons">
+                                    delete
+                                    </span></button>
                         </form>
                     </td>
                 </tr>
