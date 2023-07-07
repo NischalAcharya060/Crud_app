@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Students</h1>
+<div class="container">
+    <h1 class="page-title">Students</h1>
 
-    <a href="/students/create" class="btn btn-primary mb-2">Add New Student</a>
+    <a href="/students/create" class="btn btn-primary add-student-btn">Add New Student</a>
+
 
     @if ($students->count() > 0)
     <form action="{{ route('students.index') }}" method="GET" class="search-form">
