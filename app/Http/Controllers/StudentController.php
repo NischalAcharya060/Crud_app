@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 
 
-
-
 class StudentController extends Controller
 {
     public function index(Request $request)
@@ -152,6 +150,14 @@ class StudentController extends Controller
             $student->save();
 
             return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return Redirect('/students')->with('error', 'An error occurred: ' . $e->getMessage());
+        }
+    }
+    public function view(Student $student)
+    {
+        try {
+            return view('students.view', compact('student'));
         } catch (\Exception $e) {
             return Redirect('/students')->with('error', 'An error occurred: ' . $e->getMessage());
         }

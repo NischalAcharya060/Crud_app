@@ -71,7 +71,7 @@
                         </select>
                     </td>
                     <td>
-
+                        <a href="/students/{{ $student->id }}" class="btn btn-sm btn-info">View</a>
                         <a href="/students/{{ $student->id }}/edit" class="btn btn-sm btn-success">Edit</a>
                         <form action="/students/{{ $student->id }}" method="POST" style="display: inline-block;">
                             @csrf
@@ -85,8 +85,18 @@
         </tbody>
     </table>  
     @else
-        <div class="alert alert-info">No students found.</div>
+    <div class="alert alert-info">
+        No students data found. 
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-sm btn-primary" onclick="back()">Cancel</button>
+    </div>
     @endif
+    <script>
+        function back() {
+            window.location.href = "{{ route('students.index') }}";
+        }
+    </script>
     
 
     {{ $students->links() }}
