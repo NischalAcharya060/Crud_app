@@ -41,20 +41,20 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         try {
-
             $request->validate([
                 'sname' => 'required',
                 'semail' => 'required|email|unique:students',
                 'smobile' => 'nullable|numeric|digits:10|unique:students',
                 'sgender' => 'required|in:f,m,o',
                 'status' => 'boolean',
-                'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             ], [
                 'profile_picture.image' => 'The profile picture must be an image.',
                 'profile_picture.mimes' => 'The profile picture must be a JPEG, PNG, JPG, or GIF file.',
                 'profile_picture.max' => 'The profile picture may not be greater than 2MB.',
             ]);
 
+            DB::beginTransaction();
             // Handle profile picture upload
             if ($request->hasFile('profile_picture')) {
 
@@ -74,8 +74,13 @@ class StudentController extends Controller
             }
 
 
-            Student::create($data);
-
+            $student = Student::create($data);
+            if($student) {
+                DB::commit();
+            }
+            else{
+                DB::rollBack();
+            }
             return redirect('/students')->with('success', 'Student created successfully.');
         } catch (\Exception $e) {
             return Redirect('/students')->with('error', 'An error occurred: ' . $e->getMessage());

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->bigInteger('smobile')->nullable()->unique();
             $table->enum('sgender', ['f', 'm', 'o']);
             $table->boolean('status')->default(true);
-            $table->string('profile_picture');
-            $table->timestamps();
+            $table->string('profile_picture')->nullable();
+            $table->timestamps(true);
         });
     }
 
