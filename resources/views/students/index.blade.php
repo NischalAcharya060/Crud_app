@@ -75,8 +75,8 @@
                         </select>
                     </td>
                     <td>
-                        <a href="/students/{{ $student->id }}" class="btn btn-sm btn-info"><span class="material-icons">
-                            search
+                        <a href="/students/{{ $student->id }}" class="btn btn-sm btn-info"><span class="material-symbols-outlined">
+                            visibility
                             </span></a>
                         <a href="/students/{{ $student->id }}/edit" class="btn btn-sm btn-success"><span class="material-icons">
                             edit

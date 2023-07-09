@@ -45,7 +45,7 @@ class StudentController extends Controller
             $request->validate([
                 'sname' => 'required',
                 'semail' => 'required|email|unique:students',
-                'smobile' => 'nullable|numeric|unique:students',
+                'smobile' => 'nullable|numeric|digits:10|unique:students',
                 'sgender' => 'required|in:f,m,o',
                 'status' => 'boolean',
                 'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -97,7 +97,7 @@ class StudentController extends Controller
             $request->validate([
                 'sname' => 'required',
                 'semail' => 'required|email|unique:students,semail,' . $student->id,
-                'smobile' => 'required|numeric|min:10|unique:students,smobile,' . $student->id,
+                'smobile' => 'required|numeric|unique:students,smobile,digits:10' . $student->id,
                 'sgender' => 'required|in:f,m,o',
                 'status' => 'boolean',
                 'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
